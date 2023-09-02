@@ -7,14 +7,17 @@ import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { HeaderComponent } from './header/header.component'
+import {MatExpansionModule} from '@angular/material/expansion';
+import { HeaderComponent } from './header/header.component';
+import { PostListComponent } from './posts/post-list/post-list.component'
  
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCreateComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostListComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +25,7 @@ import { HeaderComponent } from './header/header.component'
     NoopAnimationsModule,
     MatInputModule,
     MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
