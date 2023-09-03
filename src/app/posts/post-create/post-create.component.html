@@ -1,23 +1,25 @@
-<div class="contianer p-5">
+<div class="contianer mt-5">
     <div class="row">
         <div class="col-md-12 m-auto">
             <div class="form-group mb-3">
-                <label for="title" class="form-label">Content</label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                <label for="title" class="form-label">Title</label>
+               <input type="text" name="title" id="title" class="form-control" [(ngModel)]="title">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 m-auto">
             <div class="form-group mb-3">
-                <button class="btn btn-success">Save Post</button>
+                <label for="content" class="form-label">Content</label>
+                <textarea name="" id="content" cols="30" rows="10" class="form-control" [(ngModel)]="content"></textarea>
             </div>
         </div>
     </div>
-    <hr>
     <div class="row">
-        <div class="col-md-12">
-            <app-post-list></app-post-list>
+        <div class="col-md-12 m-auto">
+            <div class="form-group mb-3">
+                <button class="btn btn-success" (click)="onAddPost()">Save Post</button>
+            </div>
         </div>
     </div>
 </div>

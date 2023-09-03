@@ -1,4 +1,14 @@
 <app-header></app-header>
 <main>
-    <app-post-create></app-post-create>
+    <div class="row">
+        <div class="col-md-12">
+            <app-post-create (postAdded)="onPostAdded($event)"></app-post-create>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <app-post-list [posts]="posts"></app-post-list>
+        </div>
+    </div>
 </main>

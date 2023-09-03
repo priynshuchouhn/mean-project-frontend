@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component'
+import { FormsModule } from '@angular/forms';
  
 
 @NgModule({
@@ -22,6 +23,7 @@ import { PostListComponent } from './posts/post-list/post-list.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     NoopAnimationsModule,
     MatInputModule,
     MatToolbarModule,
