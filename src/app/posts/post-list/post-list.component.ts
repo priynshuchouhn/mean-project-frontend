@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class PostListComponent {
 
+  posts: {title: string, content:string}[] = [
+    // {title: 'First post', content:'This the content of first post'},
+    // {title: 'second post', content:'This the content of second post'},
+    // {title: 'third post', content:'This the content of third post'},
+    // {title: 'fourth post', content:'This the content of fourth post'},
+  ]
+
 }
