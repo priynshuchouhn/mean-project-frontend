@@ -1,5 +1,5 @@
 <div class="contianer mt-5">
-  <form (ngSubmit)="onAddPost()">
+  <form [formGroup]="postForm" (ngSubmit)="onAddPost()">
     <div class="row">
       <div class="col-md-12 m-auto">
         <div class="form-group mb-3">
@@ -9,7 +9,7 @@
             name="title"
             id="title"
             class="form-control"
-            [(ngModel)]="title"
+            formControlName="title"
           />
         </div>
       </div>
@@ -24,7 +24,7 @@
             cols="30"
             rows="10"
             class="form-control"
-            [(ngModel)]="content"
+           formControlName="content"
           ></textarea>
         </div>
       </div>
