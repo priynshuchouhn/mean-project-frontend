@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Post } from './posts/post.model';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fronted'
-  posts: {title: string, content: string}[] = [];
+  posts:Post[] = [];
 
   onPostAdded(post: {title: string, content: string}){
     this.posts.push(post)

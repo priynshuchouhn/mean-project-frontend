@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Post } from '../post.model';
 
 @Component({
   selector: 'app-post-create',
@@ -7,8 +8,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent {
-  title: string = '';
-  content: string = '';
   postForm: FormGroup
 
   @Output() postAdded = new EventEmitter();
@@ -22,7 +21,7 @@ export class PostCreateComponent {
 
 
   onAddPost(){
-    const post = {
+    const post: Post = {
       title: this.postForm.value['title'],
       content: this.postForm.value['content']
     }
