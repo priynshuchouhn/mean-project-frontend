@@ -12,6 +12,7 @@ import { MatButtonModule} from '@angular/material/button';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
  
 
 @NgModule({
@@ -30,7 +31,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatToolbarModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
