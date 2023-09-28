@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from '../post.model';
+import { PostsService } from 'src/app/shared/services/posts.service';
 
 @Component({
   selector: 'app-post-create',
@@ -12,7 +13,7 @@ export class PostCreateComponent {
 
   @Output() postAdded = new EventEmitter();
 
-  constructor(){
+  constructor(private postService: PostsService){
     this.postForm = new FormGroup({
       'title': new FormControl('', Validators.required),
       'content': new FormControl('', Validators.required)
@@ -25,7 +26,8 @@ export class PostCreateComponent {
       title: this.postForm.value['title'],
       content: this.postForm.value['content']
     }
-    this.postAdded.emit(post);
+    this.postService.addNewPost(post).subscribe((res)=>{console.log(res)});
+    // this.postAdded.emit(post);
     this.postForm.reset();
   }
 }
