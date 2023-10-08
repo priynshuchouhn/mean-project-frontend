@@ -14,7 +14,6 @@ export class PostsService {
   }
 
   addNewPost(body: Post){
-    console.log(body);
     return this.http.post('http://localhost:3000/api/posts', body);
   }
 }
