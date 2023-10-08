@@ -12,10 +12,15 @@ export class PostListComponent implements OnInit {
 
   constructor(private postService: PostsService){}
  ngOnInit(): void {
-   this.postService.getAllPost().subscribe((res)=>{
-      this.posts = res.data
-   })
-   
+  this.postService.getAllPost();
+  this.postService.getPostUpdateListener().subscribe(posts =>{
+    this.posts = posts
+  });
+  // this.posts = this.postService.posts;
+ }
+
+ deletePost(id: string){
+  this.postService.deletePost(id);
  }
 
 posts: Post[] = []

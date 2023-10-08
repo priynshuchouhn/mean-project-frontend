@@ -26,8 +26,7 @@ export class PostCreateComponent {
       title: this.postForm.value['title'],
       content: this.postForm.value['content']
     }
-    this.postService.addNewPost(post).subscribe((res)=>{console.log(res)});
-    // this.postAdded.emit(post);
+    this.postService.addNewPost(post);
     this.postForm.reset();
   }
 }

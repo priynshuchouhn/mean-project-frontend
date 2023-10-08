@@ -2,13 +2,7 @@
 <main>
     <div class="row">
         <div class="col-md-12">
-            <app-post-create (postAdded)="onPostAdded($event)"></app-post-create>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-12">
-            <app-post-list></app-post-list>
+            <router-outlet></router-outlet>
         </div>
     </div>
 </main>
