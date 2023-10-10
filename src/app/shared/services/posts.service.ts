@@ -34,6 +34,10 @@ export class PostsService {
     return this.postsUpdated.asObservable();
   }
 
+  getPost(id:string){
+    return this.http.get<ApiInterface>('http://localhost:3000/api/posts', {params:{'id': id}})
+  }
+
 
 
   addNewPost(body: Post){
