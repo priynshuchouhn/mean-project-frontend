@@ -15,13 +15,15 @@ export class PostCreateComponent implements OnInit {
   mode: string = 'create';
   post!: Post;
   postId!: string
+  imagePreview!: ArrayBuffer | null | string;
 
 
 
   constructor(private postService: PostsService, private route: ActivatedRoute) {
     this.postForm = new FormGroup({
       'title': new FormControl('', Validators.required),
-      'content': new FormControl('', Validators.required)
+      'content': new FormControl('', Validators.required),
+      'image': new FormControl(null, Validators.required)
     })
   }
   ngOnInit(): void {
@@ -35,6 +37,19 @@ export class PostCreateComponent implements OnInit {
         });
       }
     })
+  }
+
+  imagePicked(e: Event){
+    const file = (e.target as HTMLInputElement)!.files![0];
+    this.postForm.patchValue({image: file});
+    this.postForm.get('image')?.updateValueAndValidity();
+    console.log(this.postForm)
+    const reader = new FileReader;
+    reader.onload = () =>{
+      this.imagePreview = reader.result
+    }
+
+    reader.readAsDataURL(file)
   }
 
 

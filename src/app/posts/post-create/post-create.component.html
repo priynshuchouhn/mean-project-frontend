@@ -1,5 +1,14 @@
-<div class="contianer mt-5">
+<div class="contianer my-auto">
   <form [formGroup]="postForm" (ngSubmit)="onAddPost()">
+    <div class="row">
+      <div class="col-md-12 img-preview" *ngIf="imagePreview">
+        <img [src]="imagePreview" [alt]="postForm.value.title" class="img-fluid">
+      </div>
+      <div class="col-md-12 mb-3 text-end">
+        <label class="btn btn-dark" for="image">Add Feature Image</label>
+        <input type="file" name="" id="image" class="d-none" accept="image/*" (change)="imagePicked($event)">
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12 m-auto">
         <div class="form-group mb-3">
