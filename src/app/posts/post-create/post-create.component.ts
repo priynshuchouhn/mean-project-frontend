@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Post } from '../post.model';
 import { PostsService } from 'src/app/shared/services/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ApiInterface } from 'src/app/shared/models/API';
 
 @Component({
   selector: 'app-post-create',
@@ -30,10 +29,14 @@ export class PostCreateComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('postId')) {
         this.mode = 'edit';
-        this.postId = paramMap.get('postid')!;
+        this.postId = paramMap.get('postId')!;
         this.postService.getPost(this.postId).subscribe((res) => {
-          const response: ApiInterface = res;
-          const post = response.data;
+          const response =  res;
+           this.post = <Post><unknown>response.data ;
+          this.postForm.patchValue({
+            'title' : this.post.title,
+            'content': this.post.content
+          })
         });
       }
     })
@@ -58,7 +61,12 @@ export class PostCreateComponent implements OnInit {
       title: this.postForm.value['title'],
       content: this.postForm.value['content']
     }
-    this.postService.addNewPost(post);
-    this.postForm.reset();
+    if(this.mode == 'edit'){
+      Object.assign(post, {'_id': this.post._id})
+      this.postService.editPost(post)
+    }else{
+      this.postService.addNewPost(post);
+      this.postForm.reset();
+    }
   }
 }

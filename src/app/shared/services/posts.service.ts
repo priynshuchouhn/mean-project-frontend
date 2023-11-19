@@ -35,7 +35,16 @@ export class PostsService {
   }
 
   getPost(id:string){
-    return this.http.get<ApiInterface>('http://localhost:3000/api/posts', {params:{'id': id}})
+    return this.http.get<ApiInterface>('http://localhost:3000/api/posts/id/', {params:{'id': `${id}`}})
+  }
+
+  editPost(body: Post){
+    return this.http.post<ApiInterface>('http://localhost:3000/api/posts/edit', body).subscribe(res=>{
+      const response: ApiInterface = res;
+      const post = response.data;
+      this.posts.push(post);
+      this.postsUpdated.next([...this.posts]);
+    });
   }
 
 
