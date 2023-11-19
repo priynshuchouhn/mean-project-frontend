@@ -39,7 +39,7 @@ export class PostsService {
     return this.http.get<ApiInterface>('http://localhost:3000/api/posts/id/', {params:{'id': `${id}`}})
   }
 
-  editPost(body: Post){
+  editPost(body: FormData){
     return this.http.post<ApiInterface>('http://localhost:3000/api/posts/edit', body).subscribe(res=>{
       const response: ApiInterface = res;
       const post = response.data;
@@ -51,11 +51,12 @@ export class PostsService {
 
 
 
-  addNewPost(body: Post){
+  addNewPost(body: FormData){
     return this.http.post<ApiInterface>('http://localhost:3000/api/posts', body).subscribe(res=>{
       const response: ApiInterface = res;
       const post = response.data;
       this.posts.push(post);
+      console.log(response.data)
       this.postsUpdated.next([...this.posts]);
       this.router.navigate(['/']);
     });

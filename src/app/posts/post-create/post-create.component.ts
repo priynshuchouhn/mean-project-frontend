@@ -57,10 +57,15 @@ export class PostCreateComponent implements OnInit {
 
 
   onAddPost() {
-    const post: Post = {
-      title: this.postForm.value['title'],
-      content: this.postForm.value['content']
-    }
+    // const post: Post = {
+    //   title: this.postForm.value['title'],
+    //   content: this.postForm.value['content']
+    // }
+    const post = new FormData();
+    post.append('title' , this.postForm.value.title);
+    post.append('content' , this.postForm.value.content);
+    post.append('image' , this.postForm.value.image, this.postForm.value.title);
+
     if(this.mode == 'edit'){
       Object.assign(post, {'_id': this.post._id})
       this.postService.editPost(post)
