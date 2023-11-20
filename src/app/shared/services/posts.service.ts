@@ -21,7 +21,8 @@ export class PostsService {
           return {
             title: post.title,
             content: post.content,
-            id: post._id
+            id: post._id,
+            imagePath: post.imagePath
           }
         })
       })
@@ -43,6 +44,7 @@ export class PostsService {
     return this.http.post<ApiInterface>('http://localhost:3000/api/posts/edit', body).subscribe(res=>{
       const response: ApiInterface = res;
       const post = response.data;
+      console.log(response);
       this.posts.push(post);
       this.postsUpdated.next([...this.posts]);
       this.router.navigate(['/']);

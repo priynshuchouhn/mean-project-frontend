@@ -5,6 +5,9 @@
         {{ post.title }}
       </mat-panel-title>
     </mat-expansion-panel-header>
+    <div class="img">
+      <img src="{{ post.imagePath }}" alt="" class="img-fluid" style="width: 50%;">
+    </div>
     <p>{{ post.content }}</p>
     <mat-action-row>
       <a [routerLink]="['edit', post.id]" mat-button color="primary">EDIT</a>
