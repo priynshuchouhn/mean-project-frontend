@@ -4,6 +4,7 @@ import { ApiInterface } from '../models/API';
 import { Post } from 'src/app/posts/post.model';
 import { Subject, map } from 'rxjs';
 import { Router } from '@angular/router';
+import { API } from './API';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class PostsService {
   posts: any[] = [];
 
  public getAllPost() {
-    return this.http.get<ApiInterface>('http://localhost:3000/api/posts').pipe(
+    return this.http.get<ApiInterface>(API.getAllPost).pipe(
       map((postData)=>{
         return postData.data.map((post)=>{
           return {
@@ -37,11 +38,11 @@ export class PostsService {
   }
 
   getPost(id:string){
-    return this.http.get<ApiInterface>('http://localhost:3000/api/posts/id/', {params:{'id': `${id}`}})
+    return this.http.get<ApiInterface>(API.getPost, {params:{'id': `${id}`}})
   }
 
   editPost(body: FormData){
-    return this.http.post<ApiInterface>('http://localhost:3000/api/posts/edit', body).subscribe(res=>{
+    return this.http.post<ApiInterface>(API.editPost, body).subscribe(res=>{
       const response: ApiInterface = res;
       const post = response.data;
       console.log(response);
@@ -54,7 +55,7 @@ export class PostsService {
 
 
   addNewPost(body: FormData){
-    return this.http.post<ApiInterface>('http://localhost:3000/api/posts', body).subscribe(res=>{
+    return this.http.post<ApiInterface>(API.addPost, body).subscribe(res=>{
       const response: ApiInterface = res;
       const post = response.data;
       this.posts.push(post);
@@ -65,7 +66,7 @@ export class PostsService {
   }
 
   deletePost(id:string){
-    return this.http.delete<ApiInterface>('http://localhost:3000/api/posts/'+id).subscribe(res=>{
+    return this.http.delete<ApiInterface>(API.deletePost+id).subscribe(res=>{
       this.getAllPost();
       console.log(res);
     });
